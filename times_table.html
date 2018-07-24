@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="font-size: 500%">구구단</h1>
+    <button style="height:50px;width:250px" onclick="myFunction()" >구구단 생성하기</button>
+    <p id = "demo" style="font-size: 300%"></p>
+ <script>
+    function myFunction() {
+        var txt = ""
+        var Str = "a";
+        var int = prompt("구구단 몇단이 궁금하세요? 입력 예시 : 2" );
+            if (int < 2 || int > 9 || int === typeof(Str)) {
+            document.getElementById("demo").innerHTML = "2~9사이에 정수만 입력해주세요ㅠㅠ";
+            } 
+            else {
+            for( i = 1; i <10; i++){
+             txt += int + "X" + i + "=" + int*i + "</br>";
+            }
+        document.getElementById("demo").innerHTML = txt;
+        }
+    }
+    </script>
+</body>
+</html>
