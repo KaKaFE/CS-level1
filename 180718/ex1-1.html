@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+</head>
+<body>
+    <h1>4칙연산 프로그램</h1>
+    <p id="result">결과</p>
+    <script>
+        var p = document.getElementById("result");
+        var str = "결과 <br>"
+        var n1 = Number(prompt("숫자를 입력해 주세요"));
+        var n2 = Number(prompt("숫자를 입력해 주세요"));
+        
+        str += n1 ," + " + n2 + " = " + (n1 + n2)+"<br>";
+        str += n1 ," - " + n2 + " = " + (n1 - n2)+"<br>";
+        str += n1 ," * " + n2 + " = " + (n1 * n2)+"<br>";
+        str += n1 ," / " + n2 + " = " + (n1 / n2)+"<br>";
+        
+        p,innerHTML = str;
+
+    </script>
+</body>
+</html>
