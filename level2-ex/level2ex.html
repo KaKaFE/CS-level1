@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>숫자 야구 게임</h1>
+    <h2>컴퓨터가 임의의 숫자 3자리를 생각합니다
+        <br>콘솔창을열어 맞춰보세요</h2>
+    <script>
+        var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var aiNumber = []; // ai 의 3자리 숫자 생성
+        for (var i = 0; i < 3; i++) {
+            var select = Math.floor(Math.random() * list.length);
+            aiNumber[i] = list.splice(select, 1)[0];
+        }
+        var count = 0;
+        var strike = 0;
+        var ball = 0;
+        while (count < 100) {
+            // 숫자를 입력받고 비교를 준비하는 부분
+            var input = prompt('3자리숫자를 입력하세요'); // 숫자를 받는 부분
+            var inputArray = input.split('');
+            strike = 0; // strike와 ball의 개수를 초기화
+            ball = 0;
+            count++; // 시도 횟수는 하나 증가
+            // 입력받은 숫자를 비교분석하는 부분
+            for (var j = 0; j < 4; j++) {
+                for (var k = 0; k < 4; k++) {
+                    if (aiNumber[j] == inputArray[k]) {
+                        if (j === k) {
+                            strike++;
+                        } else {
+                            ball++;
+                        }
+                        break;
+                    }
+                }
+            }
+            if (strike === 3) {
+                console.log('홈런!!! ' + (count - 1) + '번 만에 맞추셨습니다');
+                break;
+            } else {
+                console.log(inputArray.join('') + ': ' + strike + '스트라이크 ' + ball + '볼');
+            }
+        }
+    </script>
+</body>
+
+</html>
