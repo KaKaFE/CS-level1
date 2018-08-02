@@ -9,37 +9,36 @@
 </head>
 <style>
     body {
-        background-color: burlywood;
+        font-family: "Courier New", Courier, monospace
     }
 
     h1,
-    p,
-    input {
+    p {
         text-align: center;
-        font-size: 3em
+        font-size: 3em;
+        margin: 5px;
     }
 
     #grid {
+        margin: 50px;
         font-size: 2em;
         text-align: center;
         display: grid;
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr 1fr;
     }
 
     p2 {
-        font-weight: bold
+        font-weight: bold;
     }
 </style>
 
-<h1>숫자 야구 게임</h1>
-<p>임의의 숫자(1~9사이) 3자리를 맞추는 게임입니다!
-    <br>
-</p>
-
 <body>
+    <h1>숫자 야구 게임</h1>
+    <p>임의의 숫자(1~9사이) 3자리를 맞추는 게임입니다<br></p>
     <center>
-        <input type="text" value="" id='usernum1'>
+        <input type="text" value="숫자3자리를 입력해주세요" id='usernum1'>
         <input type="button" value="확인" onclick='run()'>
+        <br>
     </center>
     <div id="grid">
         <p2>결과창</p2>
