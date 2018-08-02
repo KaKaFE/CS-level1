@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: burlywood;
+    }
+
+    h1,
+    p,
+    input {
+        text-align: center;
+        font-size: 3em
+    }
+
+    #grid {
+        font-size: 2em;
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr
+    }
+
+    p2 {
+        font-weight: bold
+    }
+</style>
+
+<h1>숫자 야구 게임</h1>
+<p>임의의 숫자(1~9사이) 3자리를 맞추는 게임입니다!
+    <br>
+</p>
+
+<body>
+    <center>
+        <input type="text" value="" id='usernum1'>
+        <input type="button" value="확인" onclick='run()'>
+    </center>
+    <div id="grid">
+        <p2>결과창</p2>
+        <p2>컴퓨터가 고른숫자는 무슨 숫자일까요?</p2>
+        <p2 id='history'>&nbsp;</p2>
+        <p2 id="result">? ? ?</p2>
+    </div>
+    <script>
+
+        var list = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var aiNumber = [];
+        var usernum = [];
+
+        for (var i = 0; i < 3; i++) {
+            var select = Math.floor(Math.random() * (list.length));
+            aiNumber[i] = list.splice(select, 1)[0];
+        }
+        console.log(aiNumber);
+        function run() {
+            usernum = document.getElementById('usernum1').value;
+            var Str = 0;
+            var Bal = 0;
+            Str = strike(Str);
+            Bal = ball();
+            console.log(Str);
+            console.log(Bal);
+            console.log(usernum);
+            Baseball(Str, Bal);
+        }
+
+        function Baseball(Str, Bal) {
+            if (Str === 3) {
+                alert('3스트라이크! 맞추셨습니다!');
+                document.getElementById("result").innerHTML = aiNumber;
+            } else {
+                var his = Str + '스트라이크, ' + Bal + '볼' + '<br>';
+                document.getElementById("history").innerHTML = his;
+            }
+        }
+        function strike(Str) {
+            for (var i = 0; i < 3; i++) {
+                if (usernum[i] == aiNumber[i]) { Str++ }
+            }
+            return Str;
+        }
+        function ball() {
+            Bal = 0;
+            for (var n = 0; n < 3; n++) {
+                for (var m = 0; m < 3; m++) {
+                    if ((m != n) && (usernum[m] == aiNumber[n])) {
+                        Bal++;
+                    }
+                }
+            }
+            return Bal;
+        }
+    </script>
+</body>
+
+</html>
