@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>소수 판별 프로그램</h1>
+    <input type="text" id="input" placeholder="숫자를 입력하세요">
+    <div>
+        <button onclick="main()">판별하기</button>
+    </div>
+    <div id='display'></div>
+    <script>
+        function main() {
+            var result = document.getElementById('display')
+            var int = Number(document.getElementById('input').value);
+            if (int <= 1) {
+                result.innerHTML = int + '은 소수가아닙니다'
+                return;
+            } else if (int > 2) {
+                for (i = 2; (i * i) <= int; i++) {
+                    if (int % i === 0) {
+                        result.innerHTML = int + '은 소수가아닙니다'
+                        return;
+                    }
+                }
+            }
+            result.innerHTML = int + '은 소수입니다'
+        }
+    </script>
+
+</body>
+
+</html>
