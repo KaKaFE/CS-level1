@@ -1,29 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>bmi 계산기</title>
 </head>
 
 <style>
-    #center{text-align: center};
+    #center {
+        text-align: center
+    }
 </style>
 
 <body id="center">
     <h1> BMI 계산기 </h1>
 
-    체중: <input type="number" id="kg" ><br>
-    키  : <input type="text" id="key"><br>
+    체중:
+    <input type="text" id="kg">
+    <br> 키 :
+    <input type="text" id="key">
+    <br>
+    <button onclick="go()">계산하기!</button>
+    <br>
+    <p id='display1'></p>
+    <p id='display'></p>
 
-    <button onclick="bmi()">계산하기!</button><br>
+    <script>
+        var bmi = 0;
+        
+        console.log(bmi);
 
-<script>
-    var bmi =  myFunction() {
-        var x = document.getElementById("kg").value;
-        console.log(x);
-    }
-</script>
+        function go() {
+            var key1 = document.getElementById('key').value;
+            var kg1 = document.getElementById('kg').value;
+            var key2 = Math.pow(key1 * 0.01, 2);
+            console.log(key2);
+            bmi = kg1 / key2;
+            console.log(bmi);
+            document.getElementById('display1').innerHTML =
+            ' 귀하의 bmi 는' + Number(bmi.toFixed(3)) + '이며'+ '<br>' 
+            result(bmi);            
+            return bmi;
+        }
+        function result(bmi) {
+            if (bmi < 18.5) {
+                console.log('저체중');
+                document.getElementById('display').innerHTML = '저체중'
+            } else if (bmi > 18.5 && bmi < 23) {
+                console.log('정상');
+                document.getElementById('display').innerHTML = '정상'
+            } else if (bmi > 23 && bmi < 25) {
+                console.log('과체중');
+                document.getElementById('display').innerHTML = '과체중'
+            } else if (bmi > 25 && bmi < 30) {
+                console.log('비만');
+                document.getElementById('display').innerHTML = '비만'
+            } else if (bmi > 30) {
+                console.log('고도비만');
+                document.getElementById('display').innerHTML = '고도비만'
+            }
+        }
+    </script>
 </body>
+
 </html>
