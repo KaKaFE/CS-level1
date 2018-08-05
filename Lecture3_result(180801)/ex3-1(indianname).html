@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"> </p>
+    <script>
+        var username = prompt('이름을 입력하세요'); // 사용자의 이름을 입력받는다
+        var name1 = ['푸른', '지혜로운', '용감한', '욕심많은', '웅크린'] // 인디언 이름 배열
+        var name2 = ['늑대', '양', ' 말', '코끼리', '사자', '하마']
+
+        var random1 = name1[Math.floor(Math.random() * name1.length)]; // name1 의 배열은 
+        var random2 = name2[Math.floor(Math.random() * name2.length)];
+
+        document.getElementById("demo").innerHTML =
+            username + "님의 인디언 이름은 " + "<br>" + random1 + "&nbsp" + random2;
+    </script>
+</body>
+
+</html>
