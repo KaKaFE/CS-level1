@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h1,h2{
+            text-align: center;
+        }
+        #display{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+        }
+    </style>
+    <h1>1~10000 사이의 소수들</h1>
+    <h2> 범위안 소수의갯수 :<span id='allprime'></span></h2>
+    <br>
+    <p1 id = 'display'></p1>
+    <script>
+        var Prime = {};
+        Prime.all = [];
+        Prime.result = [];
+        Prime.allnum = function(num){
+            for(var i = 0; i < num; i++)
+            this.all.push(i+1);
+        }
+        Prime.check = function(n){
+            for(var i =2; i < n; i++){
+                if(n % i == 0 ){
+                    return false;
+                }                
+            }
+            return true;
+        }
+
+        Prime.getprime = function(all){
+            for( var i = 1; i < this.all.length; i++){
+                var n = this.all[i];
+                if(this.check(n)){
+                    this.result.push(n);
+                }
+            }
+        }
+        Prime.display = function(){
+            var dis = "";
+            document.getElementById('allprime').innerHTML = this.result.length;
+            for(var i=0; i < this.result.length; i++ ){
+                dis += '<p2>' +(i+1) + '번째소수:' + this.result[i] +'<br>'+'</p2>';
+            }
+            return dis;
+        }
+        
+        Prime.allnum(10000);
+        Prime.getprime();
+        document.getElementById('display').innerHTML = Prime.display();
+    </script>
+</body>
+</html>
