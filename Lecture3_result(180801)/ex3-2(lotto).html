@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    div {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 100px;
+    }
+</style>
+
 <body>
+    <center>
+        <h1>JS로또 번호 생성기</h1>
+        <button onclick="lotto.display()">로또 생성하기</button>
+    </center>
+    <div id='result'></div>
     <script>
         var lotto = {};
         lotto.all = [];
-        lotto.run = function(){
-            for (var i=0; i<45; i++){
-                this.all.push((i+1));
+        lotto.result = [];
+        lotto.run = function () {
+            for (var i = 0; i < 45; i++) {
+                this.all.push((i + 1));
             }
+        }
+        lotto.Shuffle = function () {
+            for (i = 0; i < 6; i++) {
+                var randomNum = Math.floor(Math.random() * this.all.length);
+                this.result.push(this.all.splice(randomNum, 1));
+            }
+        }
+        lotto.display = function () {
+            this.run();
+            this.Shuffle();
+            this.result.sort(function (a, b) {
+                return a - b;
+            });
+            document.getElementById('result').innerHTML = this.result.join(',  ');
+            this.result = [];
+            this.all = [];
         }
 
     </script>
 </body>
+
 </html>
