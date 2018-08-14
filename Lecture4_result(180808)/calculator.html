@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +20,9 @@
         position: absolute;
         top: 30%;
         height: 490px;
-        width: 390px;
+        width: 400px;
         display: table;
     }
-     .con .btn1 { 
-        height: 95px;
-        width: 95px;
-   }
     .con #output {
         position: absolute;
         top: 15%;
@@ -41,43 +36,42 @@
         font-size: 90px;
     }
 </style>
-
 <body>
     <h1>JS Gui 계산기</h1>
     <div class="con">
         <img src='background.png'>
         <table class="btn">
             <tr>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
             </tr>
             <tr>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
             </tr>
             <tr>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
             </tr>
             <tr>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
             </tr>
             <tr>
-                <td colspan="2"><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
-                <td><div onclick='mfuntion()' class='btn1'></div></td>
+                <td colspan="2" onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
+                <td onclick="mfuntion()"></td>
             </tr>
             </table>
-     <input type="text" id='output' placeholder='0'>
+     <input type="text" id='output' placeholder='0' maxlength="8">
     </div>
     <script src='calculator.js'></script>
 </body>
