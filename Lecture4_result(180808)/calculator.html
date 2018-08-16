@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <style>
+    /* 포지션 값해결필요
+    창크기가 줄어들시, 이미지만 줄어들고
+    버튼과 인풋창은 고정된 크기임. */
     .con {
         position: relative;
         width: 100%;
@@ -22,6 +25,7 @@
         height: 490px;
         width: 400px;
         display: table;
+        opacity: 0;
     }
     .con #output {
         position: absolute;
@@ -35,6 +39,10 @@
         text-align: right;
         font-size: 90px;
     }
+    .con td{
+        height: 95px;
+        width: 95px;
+    }
 </style>
 <body>
     <h1>JS Gui 계산기</h1>
@@ -42,36 +50,37 @@
         <img src='background.png'>
         <table class="btn">
             <tr>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
+                <td onclick="calcul.clear()" >c</td>
+                <td onclick="calcul.null()">+-</td>
+                <td onclick="calcul.null()">%</td>
+                <td onclick="calcul.input(event)">/</td>
             </tr>
             <tr>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
+                <td onclick="calcul.input(event)">7</td>
+                <td onclick="calcul.input(event)">8</td>
+                <td onclick="calcul.input(event)">9</td>
+                <td onclick="calcul.input(event)">*</td>
             </tr>
             <tr>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
+                <td onclick="calcul.input(event)">4</td>
+                <td onclick="calcul.input(event)">5</td>
+                <td onclick="calcul.input(event)">6</td>
+                <td onclick="calcul.input(event)">-</td>
             </tr>
             <tr>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
+                <td onclick="calcul.input(event)">1</td>
+                <td onclick="calcul.input(event)">2</td>
+                <td onclick="calcul.input(event)">3</td>
+                <td onclick="calcul.input(event)">+</td>
             </tr>
             <tr>
-                <td colspan="2" onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
-                <td onclick="mfuntion()"></td>
+                <td colspan="2" onclick="calcul.input(event)">0</td>
+                <td onclick="calcul.input(event)">.</td>
+                <td onclick="calcul.run()">=</td>
             </tr>
             </table>
      <input type="text" id='output' placeholder='0' maxlength="8">
+     
     </div>
     <script src='calculator.js'></script>
 </body>
