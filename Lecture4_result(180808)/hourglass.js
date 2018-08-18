@@ -6,19 +6,29 @@ hourglass.all = function () {
     this.in = document.getElementById('glass').innerHTML.split('');
 }
 
-hourglass.drawing = function () {
-    for (let i = 0; i < size + 1; i++) {
-        b += this.in.shift();
-        document.getElementById('glass').innerHTML = b;
+// hourglass.drawing = function () {
+//     for (let i = 0; i < size + 1; i++) {
+//         b += this.in.shift();
+//         document.getElementById('glass').innerHTML = b;
+//     }
+// }
+
+var c
+
+hourglass.dot = function () {
+     c = setInterval(dot2, 13);
+    }    
+
+function dot2() {
+    if (hourglass.in.length > 0){
+    b += hourglass.in.shift();
+    document.getElementById('glass').innerHTML = b;
+    }else{
+        clearInterval(c)
     }
 }
 
+hourglass.all();
+hourglass.dot();
 
-// // hourglass.dot = function () {
-// //     b = b + this.in.shift();
-// //     document.getElementById('glass').innerHTML = b;
-// //     return;
-// // };
-// hourglass.all();
-// setInterval(hourglass.dot() , 100);
 
