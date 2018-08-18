@@ -16,7 +16,8 @@
     pre {
         font-size: 25px;
     }
-    div button{
+
+    div button {
         padding: 5px;
         margin: 3px;
         margin-bottom: 20px;
@@ -28,25 +29,11 @@
     <pre id='word'>HELLO</pre>
     <div id='word2'></div>
     <button onclick='Reverse()'>뒤집기</button>
-    <button onclick='push()'>밀어내기</button>
-    <h2>일치합니다.</h2>
+    <button onclick='Lpush()'>밀어내기</button>
+    <button onclick='Rpush()'>밀어내기</button>
+    <button onclick="check()">채점</button>
+    <h2 id='check'></h2>
 </body>
-
-<script>
-    var str = document.getElementById('word').innerHTML
-    var word2 = document.getElementById('word2')
-    for (i = 0; i < str.length; i++) {
-        var btn = document.createElement('button');
-        btn.innerHTML = str[i];
-        word2.appendChild(btn);
-    }   
-
-    function Reverse(){
-        console.log('뒤집기')
-    }
-    function push(){
-        console.log('밀어내기')
-    }
-</script>
+<script src='15puzzle.js'></script>
 
 </html>
