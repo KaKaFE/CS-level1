@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button,
+    pre {
+        font-size: 25px;
+    }
+    div button{
+        padding: 5px;
+        margin: 3px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+    <h1>JS 15퍼즐</h1>
+    <pre id='word'>HELLO</pre>
+    <div id='word2'></div>
+    <button onclick='Reverse()'>뒤집기</button>
+    <button onclick='push()'>밀어내기</button>
+    <h2>일치합니다.</h2>
+</body>
+
+<script>
+    var str = document.getElementById('word').innerHTML
+    var word2 = document.getElementById('word2')
+    for (i = 0; i < str.length; i++) {
+        var btn = document.createElement('button');
+        btn.innerHTML = str[i];
+        word2.appendChild(btn);
+    }   
+
+    function Reverse(){
+        console.log('뒤집기')
+    }
+    function push(){
+        console.log('밀어내기')
+    }
+</script>
+
+</html>
