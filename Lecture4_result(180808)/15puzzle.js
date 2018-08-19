@@ -1,11 +1,19 @@
 var word = document.getElementById('word'); // HTML element
 var word2 = document.getElementById('word2'); // HTML element
 var answer = document.getElementById('check');
+var score = document.getElementById('score');
 
 // game object
 var game = {};
 game.btnword = []; // buttons
 game.ranword = ['culture', 'symbol', 'ocean', 'price', 'route', 'effort', 'section', 'solution', 'gift', 'glory'] // words
+
+game.main = function () {
+    game.getword();
+    game.nowdisplay();
+    game.btndisplay();
+    game.shuffle();
+}
 
 // ranword 배열에서 랜덤한 1개의 단어를 뽑는 getword
 game.getword = function () {
@@ -19,11 +27,13 @@ game.nowdisplay = function () {
 
 // 버튼을생성, nowword 의값을 버튼에 1개씩 넣는다.
 game.btndisplay = function () {
-    for (i = 0; i < game.nowWord.length; i++) {
+    word2.innerHTML = ''
+    this.btnword = [];
+    for (i = 0; i < this.nowWord.length; i++) {
         var btn = document.createElement('button');
-        btn.innerHTML = game.nowWord[i];
+        btn.innerHTML = this.nowWord[i];
         word2.appendChild(btn);
-        game.btnword.push(btn);
+        this.btnword.push(btn);
     }
 };
 
@@ -36,18 +46,24 @@ game.reDisplay = function () {
 
 //  버튼을 섞어준다,
 game.shuffle = function () {
-    var n = Math.floor((Math.random() * this.nowWord.length) + 1)
+    var n = Math.floor((Math.random() * this.nowWord.length))
     for (i = 0; i < n; i++) {
         Rpush();
         Reverse();
         Lpush()
     }
 };
-game.getword();
-game.nowdisplay();
-game.btndisplay();
-game.shuffle();
-
+//  점수변화 함수
+game.score = function(){
+    var score1 = Number(score.innerHTML)
+    if (score1 === 2){
+        score.innerHTML = score1 + 1 
+        alert('Thank you for Playing!')
+    }else{
+        score.innerHTML = score1 + 1 
+    }
+}
+game.main();
 
 //  버튼 배열을 뒤집는 함수
 function Reverse() {
@@ -80,6 +96,8 @@ function check() {
     var b = game.nowWord.join('')
     if (a === b) {
         answer.innerHTML = '일치합니다'
+        game.main();
+        game.score();
     } else {
         answer.innerHTML = '일치하지 않습니다'
     }

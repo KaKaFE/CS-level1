@@ -22,16 +22,20 @@
         margin: 3px;
         margin-bottom: 20px;
     }
+    span{
+        font-size: 25px;
+    }
 </style>
 
 <body>
     <h1>JS 15퍼즐</h1>
+    
     <pre id='word'>HELLO</pre>
     <div id='word2'></div>
     <button onclick='Reverse()'>뒤집기</button>
     <button onclick='Lpush()'>←밀기</button>
     <button onclick='Rpush()'>→밀기</button>
-    <button onclick="check()">채점</button>
+    <button onclick="check()">채점</button><span > 점수 : </span> <span id='score' >0</span>
     <h2 id='check'></h2>
 </body>
 <script src='15puzzle.js'></script>
