@@ -1,8 +1,12 @@
 var game = {};
-var str = document.getElementById('word').innerHTML
+// var str = document.getElementById('word').innerHTML
 var word2 = document.getElementById('word2')
 
+
 game.word = [];
+game.ranword = ['culture', 'symbol', 'ocean', 'price', 'route', 'effort', 'section', 'solution', 'gift', 'glory']
+var str = game.ranword[Math.floor(Math.random() * game.ranword.length)].toUpperCase();
+document.getElementById('word').innerHTML = str;
 game.str = str.split('')
 game.instr = function () {
     for (i = 0; i < game.str.length; i++) {
@@ -16,6 +20,15 @@ for (i = 0; i < str.length; i++) {
     word2.appendChild(btn);
     game.word.push(btn);
 }
+function shuffle() {
+    var n = Math.floor((Math.random() * str.length)+1)
+    for (i = 0; i < n; i++) {
+        Rpush();
+        Reverse();
+        Lpush()
+    }
+}
+shuffle();
 
 function Reverse() {
     var Rstr = [];
