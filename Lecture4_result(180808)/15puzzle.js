@@ -23,7 +23,7 @@ function Reverse() {
         Rstr.push(game.str.pop())
         game.word[i].innerHTML = Rstr.shift()
     }
-     for (i = 0; i < game.word.length; i++) {
+    for (i = 0; i < game.word.length; i++) {
         game.str.push(game.word[i].innerHTML);
     }
 };
@@ -38,6 +38,15 @@ function Lpush() {
     game.str.push(str)
     game.instr();
 };
-function check(){
-   
-}
+
+function check() {
+    var a = ""
+    for (i = 0; i < game.word.length; i++) {
+        a += game.word[i].innerHTML
+    }
+    if (str === a) {
+        document.getElementById('check').innerHTML = '일치합니다'
+    } else {
+        document.getElementById('check').innerHTML = '일치하지 않습니다'
+    }
+};
