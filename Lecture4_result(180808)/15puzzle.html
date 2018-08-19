@@ -8,10 +8,6 @@
     <title>Document</title>
 </head>
 <style>
-    body {
-        text-align: center;
-    }
-
     button,
     pre {
         font-size: 25px;
@@ -22,29 +18,42 @@
         margin: 3px;
         margin-bottom: 20px;
     }
-    span{
+
+    span {
         font-size: 25px;
     }
-    section{
-        float: left;
-        margin-left: 300px;
+
+    #grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    h1,
+    #game,
+    #rank {
+        text-align: center;
     }
 </style>
 
 <body>
     <h1>JS 15퍼즐</h1>
-    <section>
-    <pre id='word'>HELLO</pre>
-    <div id='word2'></div>
-    <button onclick='Reverse()'>뒤집기</button>
-    <button onclick='Lpush()'>←밀기</button>
-    <button onclick='Rpush()'>→밀기</button>
-    <button onclick="check()">채점</button><span > 점수 : </span> <span id='score' >0</span>
-    <h2 id='check'></h2>
-    <span id = time></span>
-    </section>
-      <h2>랭킹</h2>
-         
+    <div id='grid'>
+        <div id='game'>
+            <pre id='word'>HELLO</pre>
+            <div id='word2'></div>
+            <button onclick='Reverse()'>뒤집기</button>
+            <button onclick='Lpush()'>←밀기</button>
+            <button onclick='Rpush()'>→밀기</button>
+            <button onclick="check()">채점</button><span> 점수 : </span> <span id='score'>0</span>
+            <h2 id='check'></h2>
+            <span id=time></span>
+        </div>
+        <div>
+            <h2>랭킹</h2>
+            <div id = '1st'>1위 : 김구구 시간 : 16.201초</div>
+            <div>1위 : 김구구 시간 : 16.201초</div>
+        </div>
+    </div>
 </body>
 <script src='15puzzle.js'></script>
 

@@ -3,6 +3,7 @@ var word2 = document.getElementById('word2'); // HTML element
 var answer = document.getElementById('check');
 var score = document.getElementById('score');
 var time = document.getElementById('time');
+var rank = document.getElementById('1st');
 
 // game object
 var game = {};
@@ -15,7 +16,29 @@ game.main = function () {
     game.btndisplay();
     game.shuffle();
 }
-
+game.makeHuman = function () {
+    for (i = 0; i < 10; i++) {
+        Allhuman[i] = new human('', 0)
+    }
+}
+game.coount = 0;
+game.getName = function () {
+    var x = prompt('What your name ?')
+    Allhuman[this.coount].name = x;
+}
+game.getTime = function () {
+    var x = parseFloat(time.innerHTML);
+    Allhuman[this.coount].time = x;
+}
+var Allhuman = [];
+function human(name, time) {
+    this.name = name;
+    this.time = time;
+}
+human.prototype.inranking = function () {
+    rank.innerHTML = "  이름 :  " + this.name + "  시간 :  " + this.time + "초";
+    game.coount++
+}
 // ranword 배열에서 랜덤한 1개의 단어를 뽑는 getword
 game.getword = function () {
     var str = game.ranword[Math.floor(Math.random() * game.ranword.length)].toUpperCase();
@@ -55,17 +78,25 @@ game.shuffle = function () {
     }
 };
 //  점수변화 함수
-game.score = function(){
+game.score = function () {
     var score1 = Number(score.innerHTML)
-    if (score1 === 2){
-        score.innerHTML = score1 + 1 
-        alert('Thank you for Playing!')
-        clearInterval(x)
-    }else{
-        score.innerHTML = score1 + 1 
+    if (score1 === 2) {
+        score.innerHTML = score1 + 1
+        clearInterval(x);
+        alert('Thank you for Playing!');
+        this.getTime();
+        Allhuman[this.coount].inranking();
+        score.innerHTML = 0;
+        var x = setInterval(playTime, 50);
+        startTime = Date.now();
+        this.getName();
+    } else {
+        score.innerHTML = score1 + 1
     }
 }
 game.main();
+game.makeHuman();
+game.getName();
 var startTime = Date.now();
 //  버튼 배열을 뒤집는 함수
 function Reverse() {
@@ -104,9 +135,8 @@ function check() {
         answer.innerHTML = '일치하지 않습니다'
     }
 };
-
-function playTime(){
+function playTime() {
     var playTime = Date.now() - startTime;
-    time.innerHTML = ( playTime / 1000 ) + '초'
+    time.innerHTML = (playTime / 1000) + '초'
 }
 var x = setInterval(playTime, 50);
