@@ -2,6 +2,7 @@ var word = document.getElementById('word'); // HTML element
 var word2 = document.getElementById('word2'); // HTML element
 var answer = document.getElementById('check');
 var score = document.getElementById('score');
+var time = document.getElementById('time');
 
 // game object
 var game = {};
@@ -59,12 +60,13 @@ game.score = function(){
     if (score1 === 2){
         score.innerHTML = score1 + 1 
         alert('Thank you for Playing!')
+        clearInterval(x)
     }else{
         score.innerHTML = score1 + 1 
     }
 }
 game.main();
-
+var startTime = Date.now();
 //  버튼 배열을 뒤집는 함수
 function Reverse() {
     var Rstr = [];
@@ -102,3 +104,9 @@ function check() {
         answer.innerHTML = '일치하지 않습니다'
     }
 };
+
+function playTime(){
+    var playTime = Date.now() - startTime;
+    time.innerHTML = ( playTime / 1000 ) + '초'
+}
+var x = setInterval(playTime, 50);
