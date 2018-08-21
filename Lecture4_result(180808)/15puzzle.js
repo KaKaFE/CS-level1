@@ -3,42 +3,67 @@ var word2 = document.getElementById('word2'); // HTML element
 var answer = document.getElementById('check');
 var score = document.getElementById('score');
 var time = document.getElementById('time');
-var rank = document.getElementById('1st');
+
 
 // game object
+var Allhuman = [];
 var game = {};
 game.btnword = []; // buttons
 game.ranword = ['culture', 'symbol', 'ocean', 'price', 'route', 'effort', 'section', 'solution', 'gift', 'glory'] // words
 
+//  페이지 로드시 실행되는 메인함수, 배열에서 랜덤단어를 얻고,버튼과 섞기기능 실행
 game.main = function () {
     game.getword();
     game.nowdisplay();
     game.btndisplay();
     game.shuffle();
 }
+//  그후 비어있는 휴먼(사용자)객체 10개를 생성한다
 game.makeHuman = function () {
     for (i = 0; i < 10; i++) {
-        Allhuman[i] = new human('', 0)
+        Allhuman[i] = new human('', 10000)
     }
 }
+// 게임실행횟수 0으로 초기화
 game.coount = 0;
+// 사용자의 이름을 입력받아 휴먼객체name에 넣는다 
 game.getName = function () {
     var x = prompt('What your name ?')
     Allhuman[this.coount].name = x;
 }
+// 사용자의 게임기록을 휴먼 객체 time값에 넣는다.
 game.getTime = function () {
     var x = parseFloat(time.innerHTML);
     Allhuman[this.coount].time = x;
 }
-var Allhuman = [];
+// 랭킹보드를 sort 를 이용해 time 값을 기준으로 정렬하고, 모든휴먼객체의 i번째를i번째 랭킹보드에 표시하는 함수 
+game.allrank = function () {
+    Allhuman.sort(function (a, b) {
+        if (a.time > b.time) {
+            return 1;
+        }
+        if (a.time < b.time) {
+            return -1;
+        }
+        return 0;
+    });
+    for (i = 0; i < Allhuman.length; i++) {
+        Allhuman[i].inranking(i);
+    }
+    this.coount++
+}
+//  휴먼객체는 이름과 시간벨류를 가지고있다
 function human(name, time) {
     this.name = name;
     this.time = time;
 }
-human.prototype.inranking = function () {
-    rank.innerHTML = "  이름 :  " + this.name + "  시간 :  " + this.time + "초";
-    game.coount++
+// 휴먼객체의 inranking 메소드 , i번째 랭킹의 innerHTML 에 값을 넣는다
+human.prototype.inranking = function (i) {
+    document.getElementById('rank' + i).innerHTML =
+        (i + 1) + ' 위 ' + "  이름   :   " + this.name + "  시간   :  " + this.time + "    초";
 }
+
+
 // ranword 배열에서 랜덤한 1개의 단어를 뽑는 getword
 game.getword = function () {
     var str = game.ranword[Math.floor(Math.random() * game.ranword.length)].toUpperCase();
@@ -77,7 +102,7 @@ game.shuffle = function () {
         Lpush()
     }
 };
-//  점수변화 함수
+//  점수변화 함수 너무많은 일을한다. 줄어야 하는데..
 game.score = function () {
     var score1 = Number(score.innerHTML)
     if (score1 === 2) {
@@ -85,7 +110,7 @@ game.score = function () {
         clearInterval(x);
         alert('Thank you for Playing!');
         this.getTime();
-        Allhuman[this.coount].inranking();
+        this.allrank();
         score.innerHTML = 0;
         var x = setInterval(playTime, 50);
         startTime = Date.now();
@@ -94,6 +119,8 @@ game.score = function () {
         score.innerHTML = score1 + 1
     }
 }
+
+// 페이지 로드시 실행되는 메소드들
 game.main();
 game.makeHuman();
 game.getName();
@@ -135,6 +162,7 @@ function check() {
         answer.innerHTML = '일치하지 않습니다'
     }
 };
+//  플레이 타임을 알아내는 함수 , 첫실행시 시간(starttime)과 게임이 끝날때 시간을 구해서 빼면 된다.
 function playTime() {
     var playTime = Date.now() - startTime;
     time.innerHTML = (playTime / 1000) + '초'

@@ -30,8 +30,11 @@
 
     h1,
     #game,
-    #rank {
+    #rankboard {
+        border-style: dashed;
+        border-width: 10px;
         text-align: center;
+        border-color: gray;
     }
 </style>
 
@@ -48,10 +51,18 @@
             <h2 id='check'></h2>
             <span id=time></span>
         </div>
-        <div>
+        <div id='rankboard'>
             <h2>랭킹</h2>
-            <div id = '1st'>1위 : 김구구 시간 : 16.201초</div>
-            <div>1위 : 김구구 시간 : 16.201초</div>
+            <div id='rank0'>1위 </div>
+            <div id='rank1'>2위</div>
+            <div id='rank2'>3위</div>
+            <div id='rank3'>4위</div>
+            <div id='rank4'>5위</div>
+            <div id='rank5'>6위</div>
+            <div id='rank6'>7위</div>
+            <div id='rank7'>8위</div>
+            <div id='rank8'>9위</div>
+            <div id='rank9'>10위</div>
         </div>
     </div>
 </body>
