@@ -34,9 +34,11 @@
 
 <body>
     <h1>숫자 야구 게임</h1>
-    <p>임의의 숫자(1~9사이) 3자리를 맞추는 게임입니다<br></p>
+    <p>임의의 숫자(1~9사이) 3자리를 맞추는 게임입니다
+        <br>
+    </p>
     <center>
-        <input type="text" value="숫자3자리를 입력해주세요" id='usernum1'>
+        <input type="text" placeholder="3자리 숫자 입력" id='usernum1'>
         <input type="button" value="확인" onclick='run()'>
         <br>
     </center>
@@ -59,20 +61,35 @@
         console.log(aiNumber);
         function run() {
             usernum = document.getElementById('usernum1').value;
+            check();
             var Str = 0;
             var Bal = 0;
             Str = strike(Str);
             Bal = ball();
-            console.log(Str);
-            console.log(Bal);
-            console.log(usernum);
+            // console.log(Str);
+            // console.log(Bal);
+            // console.log(usernum);
             Baseball(Str, Bal);
         }
-
+        function check() {
+            if (usernum.length < 3 || usernum.length > 3) {
+                alert('3자리 숫자만 입력해주세요');
+                document.getElementById('usernum1').value = ''
+                usernum = [];
+            }
+            for (i = 0; i < usernum.length; i++) {
+                if (usernum[i] === usernum[i + 1] || usernum[i] === usernum[i +2]) {
+                    alert('중복된 숫자는 입력하실수 없습니다.')
+                    document.getElementById('usernum1').value = ''
+                    usernum = [];
+                }
+            }
+        }
         function Baseball(Str, Bal) {
             if (Str === 3) {
                 alert('3스트라이크! 맞추셨습니다!');
                 document.getElementById("result").innerHTML = aiNumber;
+                
             } else {
                 var his = Str + '스트라이크, ' + Bal + '볼' + '<br>';
                 document.getElementById("history").innerHTML = his;
@@ -80,20 +97,53 @@
         }
         function strike(Str) {
             for (var i = 0; i < 3; i++) {
-                if (usernum[i] == aiNumber[i]) { Str++ }
+                if (usernum[i] == aiNumber[i]) {
+                    Str++
+                }
             }
             return Str;
         }
+        // function ball() {
+        //     Bal = 0;
+        //     for (var n = 0; n < 3; n++) {
+        //         for (var m = 0; m < 3; m++) {
+        //             if ((m != n) && (usernum[m] == aiNumber[n])) {
+        //                 Bal++;
+        //             }
+        //         }
+        //     }
+        //     return Bal;
+        // }
+
+        // function ball() {
+        //     bal = 0;
+        //     var j = 0;
+        //     if (j === 2) {
+        //         return bal;
+        //     } else {
+        //         for (i = 0; i < aiNumber.length; i++) {
+        //             if ((j != i) && usernum[j] == aiNumber[i]) {
+        //                 bal++
+        //             }
+        //         }
+        //         j++
+        //         ball();
+        //     }
+        // }
         function ball() {
             Bal = 0;
-            for (var n = 0; n < 3; n++) {
-                for (var m = 0; m < 3; m++) {
-                    if ((m != n) && (usernum[m] == aiNumber[n])) {
-                        Bal++;
-                    }
-                }
+            var j = 0;
+            for( j=0; j<3; j++){
+                ballloop(j)
             }
             return Bal;
+        }
+        function ballloop(j){
+            for (i = 0; i < aiNumber.length; i++) {
+                if ((j != i) && usernum[j] == aiNumber[i]) {
+                    Bal++;
+                }
+            }
         }
     </script>
 </body>
