@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: monospace;
+    }
+
+    h1,
+    p {
+        text-align: center;
+        font-size: 3em;
+        margin: 5px;
+    }
+    #usernum1, #run{
+        font-size: 25px;
+    }
+    #grid {
+        margin: 50px;
+        font-size: 2em;
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-style: solid;
+    }
+
+    #result, #history{
+        font-weight: bold;
+        border-style: double;
+    }
+</style>
+
+<body>
+    <h1>숫자 야구 게임</h1>
+    <p>임의의 숫자(1~9사이) 3자리를 맞추는 게임입니다<br></p>
+    <center>
+        <input type="text" placeholder="3자리 숫자 입력" id='usernum1'>
+        <input type="button" value="확인" onclick='run()'id='run'>
+        <br>
+    </center>
+    <div id="grid">
+        <div>결과</div>
+        <div>기록</div>
+        <div id='result'></div>
+        <div id="history"></div>
+    </div>
+    <script src='Numberbaseball.js'></script>
+</body>
+
+</html>
